@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
-import 'package:get/state_manager.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:onboading/models/on_boarding_model.dart';
-import 'package:get/utils.dart';
+import 'package:onboading/utils/assets_paths.dart';
 import 'package:onboading/views/home/home_screen.dart';
 
 class OnBoardingController extends GetxController {
@@ -11,27 +10,31 @@ class OnBoardingController extends GetxController {
 
   bool get isLastPage => selectedPageIndex.value == onBoardingPages.length - 1;
 
-  goToNextPage() {
-    if (isLastPage) {
-      Get.offAll(const HomeScreen());
+  void goToNextPage() {
+    if (!isLastPage) {
+      pageController.nextPage(
+        duration: const Duration(microseconds: 300),
+        curve: Curves.ease,
+      );
     } else {
-      pageController.nextPage(duration: 300.milliseconds, curve: Curves.ease);
+      Get.offAll(() => const HomeScreen());
     }
   }
 
   List<OnBoardingModel> onBoardingPages = [
     OnBoardingModel(
-      image: 'assets/order.png',
+      imagePath: AssetPaths.kOnBoarding01,
       title: 'Order Your Food',
       description: 'Now you can order food any time  right from your mobile.',
     ),
     OnBoardingModel(
-      image: 'assets/cook.png',
+      imagePath: AssetPaths.kOnBoarding02,
       title: 'Cooking Safe Food',
-      description: 'We are maintain safty and We keep clean while making food.',
+      description:
+          'We are maintain safety and We keep clean while making food.',
     ),
     OnBoardingModel(
-      image: 'assets/deliver.png',
+      imagePath: AssetPaths.kOnBoarding03,
       title: 'Quick Delivery',
       description: 'Orders your favorite meals will be  immediately deliver',
     ),

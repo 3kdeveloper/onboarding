@@ -1,10 +1,10 @@
 class OnBoardingModel {
-  final String image;
+  final String imagePath;
   final String title;
   final String description;
 
   OnBoardingModel({
-    required this.image,
+    required this.imagePath,
     required this.title,
     required this.description,
   });

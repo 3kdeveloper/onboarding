@@ -37,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return const Scaffold(
       body: Center(
         child: Text(
-          'Splash Screen',
+          'On Boarding',
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
